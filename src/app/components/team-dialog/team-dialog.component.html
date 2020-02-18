@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<mat-dialog-content [formGroup]="form"  *ngIf="title !== 'delete'">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Wins" formControlName="wins" type="number"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Rating" formControlName="rating"  type="number"/>
+  </mat-form-field>
+</mat-dialog-content>
+<h2  *ngIf="this.title === 'delete'">{{ team.name }}?</h2>
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">
+    Close
+  </button>
+
+  <button
+    class="mat-raised-button mat-primary"
+    [disabled]="!form.valid"
+    (click)="save()"
+    *ngIf="this.title !== 'delete'"
+  >
+    Save
+  </button>
+  <button
+    class="mat-raised-button mat-primary"
+    [disabled]="!form.valid"
+    *ngIf="title === 'delete'"
+    (click)="delete()"
+  >
+    Delete
+  </button>
+</mat-dialog-actions>

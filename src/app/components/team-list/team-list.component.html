@@ -1,0 +1,14 @@
+<mat-list>
+  <mat-list-item *ngFor="let team of teams" class="items">
+    <app-team-item [team]="team" class="items"></app-team-item>
+  </mat-list-item>
+  <button
+    class="btn--action"
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="createNew()"
+  >
+    Create New
+  </button>
+</mat-list>

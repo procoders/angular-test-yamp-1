@@ -1,0 +1,24 @@
+<div class="team" *ngIf="team">
+  <h4 class="team__name" mat-line>{{ team.name }}</h4>
+  <p class="team__rating" mat-line>{{ team.rating }}</p>
+  <p class="team__wins" mat-line>{{ team.wins }}</p>
+
+  <div class="team__actions">
+    <button
+      mat-button
+      class="mat-raised-button"
+      color="primary"
+      (click)="editCourse(team)"
+    >
+      {{ "Edit" | uppercase }}
+    </button>
+    <button
+      mat-button
+      class="mat-raised-button mat-accent"
+      color="warn"
+      (click)="deleteTeam(team)"
+    >
+      {{ "Delete" | uppercase }}
+    </button>
+  </div>
+</div>
