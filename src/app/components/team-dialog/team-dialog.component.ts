@@ -56,6 +56,9 @@ export class TeamDialogComponent {
         this.dialogRef.close(this.form.value);
     }
 
+    /**
+     * Close the dialogue window
+     */
     close() {
         this.dialogRef.close();
     }

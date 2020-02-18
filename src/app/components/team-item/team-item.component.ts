@@ -36,6 +36,10 @@ export class TeamItemComponent {
 
   }
 
+  /**
+   * Opens a modal dialogue window for confirmation deletion
+   *
+   */
   deleteTeam(team) {
     const dialogConfig = new MatDialogConfig();
 

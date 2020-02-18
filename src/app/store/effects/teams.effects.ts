@@ -26,6 +26,9 @@ export class TeamEffects {
     private localStorageService: LocalStorageService
   ) {}
 
+  /**
+   * Get data from API
+   */
   @Effect()
   getTeams$ = this.actions$.pipe(
     ofType(TeamsActionsList.GetTeams),
@@ -36,7 +39,9 @@ export class TeamEffects {
 
   );
 
-
+ /**
+  * Get data from localStorage
+  */
   @Effect()
   getStorageTeams$ = this.actions$.pipe(
     ofType(TeamsActionsList.GetTeamsStorage),

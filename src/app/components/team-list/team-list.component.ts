@@ -26,6 +26,9 @@ export class TeamListComponent implements OnInit {
     });
   }
 
+  /**
+   * Open a dialogue window with form for creating a new instance of Team record
+   */
   createNew() {
     const dialogConfig = new MatDialogConfig();
     const team = new Team();

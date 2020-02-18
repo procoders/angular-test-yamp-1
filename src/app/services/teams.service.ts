@@ -18,7 +18,9 @@ export class TeamService {
         private http: HttpClient,
     ) { }
 
-
+   /**
+    * Fetch data
+    */
     getTeams(): Observable<Team[]> {
         return this.http.get<Team[]>(this.teamsUrl)
             .pipe(
@@ -27,6 +29,7 @@ export class TeamService {
                   teams = teams
                     .filter(team => team.name)
                     .map(item => {
+                      // Remove unnecessary properties
                       delete item.losses;
                       delete item.tag;
                       delete item.logo_url;
@@ -39,6 +42,9 @@ export class TeamService {
             );
     }
 
+    /**
+     * Create a unique id
+     */
     generateUI(): string {
       return uuid();
     }
@@ -47,6 +53,9 @@ export class TeamService {
 
 export const keyName = 'teams';
 
+/**
+ * Types of modal dialogue window
+ */
 export enum windowTypes {
   edit = 'edit',
   new = 'new',

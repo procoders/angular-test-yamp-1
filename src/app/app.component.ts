@@ -13,6 +13,10 @@ export class AppComponent implements OnInit {
   title = 'Teams Records';
   constructor(private store: Store<TeamState>, private localStorageService: LocalStorageService) {}
 
+  /**
+   * Check if there is data in localStorage.
+   * If localStorage is empty it fetches data from API
+   */
   ngOnInit() {
     if (!this.localStorageService.getSavedState(keyName)) {
       this.store.dispatch(new GetTeams());
