@@ -4,7 +4,7 @@ import { Team } from '@models-app/team.model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TeamState } from '@store-app/states/teams.states';
-import { UpdateTeam, CreateTeam } from '@store-app/actions/teams.actions';
+import { UpdateTeam, CreateTeam, RemoveTeam } from '@store-app/actions/teams.actions';
 import { TeamService, windowTypes } from '@services-app/teams.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class TeamDialogComponent {
         private dialogRef: MatDialogRef<TeamDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data ) {
         const  {rating, name, wins} = data.team;
-        this.name = name ? name : 'Create new team';
+        this.name = name;
         this.team = data.team;
         this.type = data.type;
         this.form = fb.group({
@@ -61,6 +61,11 @@ export class TeamDialogComponent {
      */
     close() {
         this.dialogRef.close();
+    }
+
+    delete() {
+        this.store.dispatch(new RemoveTeam(this.team));
+        this.dialogRef.close(this.form.value);
     }
 
 }
