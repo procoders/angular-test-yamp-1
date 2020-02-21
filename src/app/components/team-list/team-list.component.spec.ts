@@ -3,7 +3,6 @@ import { TeamListComponent } from './team-list.component';
 import { TeamDialogComponent } from '../team-dialog/team-dialog.component';
 import { TeamState } from '@store-app/states/teams.states';
 import { selectListTeam } from '@store-app/states/app.states';
-import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MemoizedSelector, Store } from '@ngrx/store';
@@ -26,16 +25,9 @@ describe('TeamListComponent', () => {
   let fixture: ComponentFixture<TeamListComponent>;
   let dialog;
   let debugElement;
-  const initialState = teamsList;
   let nativeElement;
   let store: MockStore<AppState>;
   let mockTeamSelector: MemoizedSelector<TeamState, Team[]>;
-
-
-  @Component({selector: 'app-team-item', template: ''})
-  class EventComponent {
-    @Input() team: Team;
-  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -85,12 +77,6 @@ describe('TeamListComponent', () => {
     });
 
   });
-
-
-
-
-
-
 });
 
 
