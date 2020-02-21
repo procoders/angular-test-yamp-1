@@ -1,9 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Team } from '@models-app/team.model';
 import { Store } from '@ngrx/store';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TeamDialogComponent } from '../team-dialog/team-dialog.component';
-import { TeamService, windowTypes } from '@services-app/teams.service';
+import { windowTypes } from '@services-app/teams.service';
+import { AppState, selectListTeam } from '@store-app/states/app.states';
+import { Observable } from 'rxjs';
+
+
 @Component({
   selector: 'app-team-list',
   templateUrl: './team-list.component.html',
@@ -11,19 +15,14 @@ import { TeamService, windowTypes } from '@services-app/teams.service';
 })
 export class TeamListComponent implements OnInit {
 
-  teams: Team[];
-  teamsNew: any[];
+  teams: Observable<Team[]>;
   constructor(
-    private store: Store<Team[]>,
+    private store: Store<AppState>,
     private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.store.select('listOfTeams').subscribe( data => {
-      if (data.teams.length > 0) {
-        this.teams = data.teams;
-      }
-    });
+    this.teams = this.store.select(selectListTeam);
   }
 
   /**
@@ -38,13 +37,7 @@ export class TeamListComponent implements OnInit {
 
     dialogConfig.data = { team, type: windowTypes.new};
 
-    const dialogRef = this.dialog.open(TeamDialogComponent,
-        {width: '400px', data: dialogConfig.data});
-
-
-    dialogRef.afterClosed().subscribe(
-        val => console.log('Dialog output:', val)
-    );
+    const dialogRef = this.dialog.open(TeamDialogComponent, {width: '400px', data: dialogConfig.data});
 
   }
 

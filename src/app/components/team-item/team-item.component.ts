@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Team } from '@models-app/team.model';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { RemoveTeam } from '@store-app/actions/teams.actions';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TeamDialogComponent } from '../team-dialog/team-dialog.component';
 import { windowTypes } from '@services-app/teams.service';
 
@@ -15,7 +13,7 @@ import { windowTypes } from '@services-app/teams.service';
 export class TeamItemComponent {
 
   @Input() team: Team;
-  constructor(private dialog: MatDialog, private store: Store<Team[]>) { }
+  constructor(private dialog: MatDialog) { }
 
   editCourse(team: Team) {
 
@@ -28,11 +26,6 @@ export class TeamItemComponent {
 
     const dialogRef = this.dialog.open(TeamDialogComponent,
         {width: '400px', data: dialogConfig.data});
-
-
-    dialogRef.afterClosed().subscribe(
-        val => console.log('Dialog output:', val)
-    );
 
   }
 
@@ -51,10 +44,6 @@ export class TeamItemComponent {
     const dialogRef = this.dialog.open(TeamDialogComponent,
         {width: '400px', data: dialogConfig.data});
 
-
-    dialogRef.afterClosed().subscribe(
-        val => console.log('Dialog output:', val)
-    );
   }
 
 }

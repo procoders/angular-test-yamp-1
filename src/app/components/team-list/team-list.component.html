@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let team of teams" class="items">
+  <mat-list-item *ngFor="let team of teams | async" class="items">
     <app-team-item [team]="team" class="items"></app-team-item>
   </mat-list-item>
   <button
@@ -7,6 +7,7 @@
     mat-button
     mat-raised-button
     color="primary"
+    data-type="create-btn"
     (click)="createNew()"
   >
     Create New

@@ -1,5 +1,3 @@
-
-
 export const testObject = {
   team_id: 'sds-22',
   rating: 322,

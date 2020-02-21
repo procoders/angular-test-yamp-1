@@ -1,5 +1,3 @@
-
-
 export const teamsItem = [
     {
         team_id: 1883502,

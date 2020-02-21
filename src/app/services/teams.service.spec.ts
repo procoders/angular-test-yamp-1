@@ -2,7 +2,7 @@ import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { TeamService } from './teams.service';
-import { teamsItem } from './-moc-teams.service.spec';
+import { teamsItem } from './-moc-teams.service';
 
 describe('StudentsService', () => {
     let injector: TestBed;

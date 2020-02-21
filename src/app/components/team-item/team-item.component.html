@@ -8,12 +8,14 @@
       mat-button
       class="mat-raised-button"
       color="primary"
+      data-type="edit-btn"
       (click)="editCourse(team)"
     >
       {{ "Edit" | uppercase }}
     </button>
     <button
       mat-button
+      data-type="delete-btn"
       class="mat-raised-button mat-accent"
       color="warn"
       (click)="deleteTeam(team)"
